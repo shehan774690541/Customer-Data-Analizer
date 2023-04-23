@@ -29,15 +29,8 @@ public class home extends javax.swing.JFrame {
      */
     public home() {
         initComponents();
-        table_ithems();
-        jButton8.setEnabled(false);
-        ithemTable.setAutoCreateRowSorter(true);
-        table_manageIthem();
-        stockTable.setAutoCreateRowSorter(true);
-        updateCustomerTable();
-        customer_IthemsTable.setAutoCreateRowSorter(true);
-        clickRowCustomerTable();
-        customer_selectedIthemsTable.setAutoCreateRowSorter(true);
+        jTabbedPane1.setEnabled(false); 
+        btnStop.setEnabled(false);
     }
 
     /**
@@ -159,7 +152,6 @@ public class home extends javax.swing.JFrame {
         lblPort.setText("3306");
 
         lblUser.setFont(new java.awt.Font("Corbel", 0, 20)); // NOI18N
-        lblUser.setText("root");
 
         lblPassword.setFont(new java.awt.Font("Corbel", 0, 20)); // NOI18N
 
@@ -1047,14 +1039,24 @@ public class home extends javax.swing.JFrame {
     private void btnStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStopActionPerformed
         // TODO add your handling code here:
         try {
-
+            btnStop.setEnabled(false);
+            jTabbedPane1.setEnabled(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnStopActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-
+        connect();
+        table_ithems();
+        jButton8.setEnabled(false);
+        ithemTable.setAutoCreateRowSorter(true);
+        table_manageIthem();
+        stockTable.setAutoCreateRowSorter(true);
+        updateCustomerTable();
+        customer_IthemsTable.setAutoCreateRowSorter(true);
+        clickRowCustomerTable();
+        customer_selectedIthemsTable.setAutoCreateRowSorter(true);
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
@@ -1237,6 +1239,27 @@ public class home extends javax.swing.JFrame {
 //    
 //-----------------------Customers---------------------------------------    
 //  
+    public void calculatePrice() {
+        try {
+            String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+            String user = lblUser.getText();
+            String password = lblPassword.getText();
+
+            String query = "SELECT * FROM cart";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(query);
+
+            while (result.next()) {
+                
+
+            }
+
+        } catch (Exception e) {
+        }
+    }
+
     public void serchCart() {
         DefaultTableModel obj = (DefaultTableModel) customer_selectedIthemsTable.getModel();
         TableRowSorter<DefaultTableModel> obj1 = new TableRowSorter<>(obj);
@@ -1340,25 +1363,7 @@ public class home extends javax.swing.JFrame {
             Connection conn = null;
             int count = 1;
             try {
-                try {
-                    try {
-                        String query = "SELECT * FROM cart";
-                        Class.forName("com.mysql.cj.jdbc.Driver");
-                        Connection connection = DriverManager.getConnection(url, user, password);
-                        Statement statement = connection.createStatement();
-                        ResultSet result = statement.executeQuery(query);
-
-                        while (result.next()) {
-//                            JOptionPane.showMessageDialog(null, "count: " + count, "Error", JOptionPane.ERROR_MESSAGE);
-                            count = count + 1;
-                        }
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-
-                } catch (Exception e) {
-                }
-
+                
                 String query = "INSERT INTO cart (ID, Ithem, Brand, IthemCount)VALUES (" + int_tableId + ", '" + table_ithemName + "', '" + table_ithemBrand + "', " + int_ithemCount + ");";
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection connection = DriverManager.getConnection(url, user, password);
@@ -1815,6 +1820,8 @@ public class home extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
             lblstatus_login.setText("Connection successful!");
+            jTabbedPane1.setEnabled(true);
+            btnStop.setEnabled(true);
             //            System.out.println("Connection successful!");
         } catch (Exception e) {
             lblstatus_login.setText("Connection failed!");
