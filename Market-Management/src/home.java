@@ -34,6 +34,10 @@ public class home extends javax.swing.JFrame {
         ithemTable.setAutoCreateRowSorter(true);
         table_manageIthem();
         stockTable.setAutoCreateRowSorter(true);
+        updateCustomerTable();
+        customer_IthemsTable.setAutoCreateRowSorter(true);
+        clickRowCustomerTable();
+        customer_selectedIthemsTable.setAutoCreateRowSorter(true);
     }
 
     /**
@@ -101,6 +105,35 @@ public class home extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         ithemStatus = new javax.swing.JTextArea();
         jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        customer_IthemsTable = new javax.swing.JTable();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        customer_selectedIthemsTable = new javax.swing.JTable();
+        jPanel10 = new javax.swing.JPanel();
+        search_customIthems = new javax.swing.JTextField();
+        btn_customerSearch = new javax.swing.JButton();
+        cartSearch = new javax.swing.JTextField();
+        jButton11 = new javax.swing.JButton();
+        custom_addCart = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        ithem_count = new javax.swing.JTextField();
+        jButton16 = new javax.swing.JButton();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        customerSummary = new javax.swing.JTextArea();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jTextField3 = new javax.swing.JTextField();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jButton17 = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        orderSummary = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -227,7 +260,7 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(182, 182, 182)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -618,7 +651,7 @@ public class home extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(jLabel10)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -664,15 +697,303 @@ public class home extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Ithem Management", jPanel9);
 
+        customer_IthemsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Ithem", "Brand", "Price", "Discount", "ithem Count"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        customer_IthemsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customer_IthemsTableMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(customer_IthemsTable);
+        if (customer_IthemsTable.getColumnModel().getColumnCount() > 0) {
+            customer_IthemsTable.getColumnModel().getColumn(0).setMinWidth(30);
+            customer_IthemsTable.getColumnModel().getColumn(0).setPreferredWidth(40);
+            customer_IthemsTable.getColumnModel().getColumn(0).setMaxWidth(50);
+            customer_IthemsTable.getColumnModel().getColumn(4).setMinWidth(50);
+            customer_IthemsTable.getColumnModel().getColumn(4).setPreferredWidth(60);
+            customer_IthemsTable.getColumnModel().getColumn(4).setMaxWidth(80);
+            customer_IthemsTable.getColumnModel().getColumn(5).setMinWidth(35);
+            customer_IthemsTable.getColumnModel().getColumn(5).setPreferredWidth(50);
+            customer_IthemsTable.getColumnModel().getColumn(5).setMaxWidth(80);
+        }
+
+        customer_selectedIthemsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Ithem", "Brand", "Ithem Count", "Pice", "*"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        customer_selectedIthemsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customer_selectedIthemsTableMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(customer_selectedIthemsTable);
+        if (customer_selectedIthemsTable.getColumnModel().getColumnCount() > 0) {
+            customer_selectedIthemsTable.getColumnModel().getColumn(5).setHeaderValue("*");
+        }
+
+        jPanel10.setBackground(new java.awt.Color(204, 255, 204));
+
+        search_customIthems.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                search_customIthemsKeyReleased(evt);
+            }
+        });
+
+        btn_customerSearch.setText("Search Ithem");
+        btn_customerSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_customerSearchActionPerformed(evt);
+            }
+        });
+
+        cartSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cartSearchKeyReleased(evt);
+            }
+        });
+
+        jButton11.setText("Search Ithem");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        custom_addCart.setText("Add To Cart");
+        custom_addCart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                custom_addCartActionPerformed(evt);
+            }
+        });
+
+        jButton13.setText("Remove In Cart");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        jButton14.setText("Clear Cart");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
+        jButton15.setText("Refresh Ithem List");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        jButton16.setText("Ithem Count");
+
+        jTextField5.setEditable(false);
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel13.setText("PRICE :");
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel15.setText("LKR");
+
+        jButton5.setText("CART");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(search_customIthems, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ithem_count, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(btn_customerSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(cartSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jButton16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(custom_addCart)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton13)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton11)
+                    .addComponent(jButton5))
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(search_customIthems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_customerSearch)
+                    .addComponent(cartSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(custom_addCart)
+                    .addComponent(jButton13)
+                    .addComponent(jButton14)
+                    .addComponent(jButton15)
+                    .addComponent(ithem_count, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton16)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel15)
+                    .addComponent(jButton5))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel11.setBackground(new java.awt.Color(204, 255, 204));
+
+        customerSummary.setColumns(20);
+        customerSummary.setRows(5);
+        jScrollPane6.setViewportView(customerSummary);
+
+        jCheckBox1.setText("Add Discount");
+
+        jCheckBox2.setText("Custom Discount");
+
+        jButton17.setText("BUY");
+
+        orderSummary.setColumns(20);
+        orderSummary.setRows(5);
+        jScrollPane8.setViewportView(orderSummary);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jScrollPane8)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jCheckBox1)
+                        .addGap(47, 47, 47)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBox2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton17)
+                        .addGap(19, 19, 19))))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox1)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jButton17)))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jScrollPane5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1119, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 629, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Customers", jPanel7);
@@ -681,9 +1002,7 @@ public class home extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1134, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -698,6 +1017,8 @@ public class home extends javax.swing.JFrame {
         ithems_delet();
         table_ithems();
         clear_ithem();
+        table_manageIthem();
+        updateCustomerTable();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -718,6 +1039,8 @@ public class home extends javax.swing.JFrame {
         addData();
         //        JOptionPane.showMessageDialog(null, "Data Aded!1", "Error", JOptionPane.ERROR_MESSAGE);
         table_ithems();
+        table_manageIthem();
+        updateCustomerTable();
         //        JOptionPane.showMessageDialog(null, "Data Aded!2", "Error", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -763,21 +1086,25 @@ public class home extends javax.swing.JFrame {
         // TODO add your handling code here:
         stock_clear();
         DefaultTableModel model = (DefaultTableModel) stockTable.getModel();
-        
+
 //        model.setRowCount(0);
         stock_filter();
-        
+        table_manageIthem();
+
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) stockTable.getModel();
-        stock_filter();
+        model.setRowCount(0);
+        table_manageIthem();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         stock_management();
+        table_manageIthem();
+        updateCustomerTable();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -788,13 +1115,10 @@ public class home extends javax.swing.JFrame {
     private void stockTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stockTableMouseClicked
         // TODO add your handling code here:
         int index = stockTable.getSelectedRow();
-
         TableModel model = stockTable.getModel();
-
         String table_id = model.getValueAt(index, 0).toString();
-
         int int_stockID = Integer.parseInt(table_id);
-        
+
         try {
             String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
             String user = lblUser.getText();
@@ -809,13 +1133,10 @@ public class home extends javax.swing.JFrame {
             if (rs.next()) {
                 String stockID = rs.getString("ID");
                 manage_ID.setText(stockID);
-                
                 String ithemStock = rs.getString("stock");
                 manage_changeCount.setText(ithemStock);
-
                 String ithemName = rs.getString("ithemName");
                 manage_name.setText(ithemName);
-
                 String ithem_brand = rs.getString("ithemBrand");
                 String ithem_price = rs.getString("ithemPrce");
                 String ithem_discount = rs.getString("ithemDiscount");
@@ -830,8 +1151,6 @@ public class home extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR : " + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
-//        jButton8.setEnabled(true);
-//        txtIndex.setEnabled(false);
     }//GEN-LAST:event_stockTableMouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -841,36 +1160,360 @@ public class home extends javax.swing.JFrame {
 
     private void manage_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_manage_nameKeyReleased
         // TODO add your handling code here:
-        DefaultTableModel obj = (DefaultTableModel)stockTable.getModel();
+        DefaultTableModel obj = (DefaultTableModel) stockTable.getModel();
         TableRowSorter<DefaultTableModel> obj1 = new TableRowSorter<>(obj);
         stockTable.setRowSorter(obj1);
         obj1.setRowFilter(RowFilter.regexFilter(manage_name.getText()));
     }//GEN-LAST:event_manage_nameKeyReleased
 
+    private void btn_customerSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_customerSearchActionPerformed
+        // TODO add your handling code here:
+        filterCustomerTable();
+    }//GEN-LAST:event_btn_customerSearchActionPerformed
+
+    private void search_customIthemsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_search_customIthemsKeyReleased
+        // TODO add your handling code here:
+        filterCustomerTable();
+    }//GEN-LAST:event_search_customIthemsKeyReleased
+
+    private void custom_addCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custom_addCartActionPerformed
+        // TODO add your handling code here:
+        addToCart();
+        clickRowCustomerTable();
+    }//GEN-LAST:event_custom_addCartActionPerformed
+
+    private void customer_IthemsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customer_IthemsTableMouseClicked
+        // TODO add your handling code here:
+        selectIthemForCart();
+    }//GEN-LAST:event_customer_IthemsTableMouseClicked
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+
+        DefaultTableModel model = (DefaultTableModel) customer_IthemsTable.getModel();
+        model.setRowCount(0);
+        updateCustomerTable();
+
+        DefaultTableModel mode2 = (DefaultTableModel) customer_selectedIthemsTable.getModel();
+        mode2.setRowCount(0);
+        clickRowCustomerTable();
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+        removeCart();
+        DefaultTableModel mode2 = (DefaultTableModel) customer_selectedIthemsTable.getModel();
+        mode2.setRowCount(0);
+        clickRowCustomerTable();
+        orderSummary.setText("");
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void customer_selectedIthemsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customer_selectedIthemsTableMouseClicked
+        // TODO add your handling code here:
+        cartSummary();
+    }//GEN-LAST:event_customer_selectedIthemsTableMouseClicked
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+        clearCart();
+        DefaultTableModel mode2 = (DefaultTableModel) customer_selectedIthemsTable.getModel();
+        mode2.setRowCount(0);
+        clickRowCustomerTable();
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void cartSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cartSearchKeyReleased
+        // TODO add your handling code here:
+        serchCart();
+    }//GEN-LAST:event_cartSearchKeyReleased
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        serchCart();
+    }//GEN-LAST:event_jButton11ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
-    public void stock_filter(){
-        int index = ithemTable.getSelectedRow();
-
-        TableModel model = ithemTable.getModel();
-
-        String table_id = model.getValueAt(index, 0).toString();
-        String table_ithemName = model.getValueAt(index, 1).toString();
-        String table_ithemBrand = model.getValueAt(index, 2).toString();
-        String table_ithemPrice = model.getValueAt(index, 3).toString();
-        String Table_Discount = model.getValueAt(index, 4).toString();
-
-        txtIndex.setText(table_id);
-        txtName.setText(table_ithemName);
-        txtBrand.setText(table_ithemBrand);
-        txtPrice.setText(table_ithemPrice);
-        txtDiscount.setText(Table_Discount);
-        jButton8.setEnabled(true);
-        txtIndex.setEnabled(false);
+//    
+//-----------------------Customers---------------------------------------    
+//  
+    public void serchCart() {
+        DefaultTableModel obj = (DefaultTableModel) customer_selectedIthemsTable.getModel();
+        TableRowSorter<DefaultTableModel> obj1 = new TableRowSorter<>(obj);
+        customer_selectedIthemsTable.setRowSorter(obj1);
+        obj1.setRowFilter(RowFilter.regexFilter(cartSearch.getText()));
     }
-    
+
+    public void clearCart() {
+        try {
+            String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+            String user = lblUser.getText();
+            String password = lblPassword.getText();
+
+            String query = "TRUNCATE TABLE `cart`";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, user, password);
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void cartSummary() {
+        String rm_id = txtIndex.getText();
+
+        String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+        String user = lblUser.getText();
+        String password = lblPassword.getText();
+
+        try {
+            int index = customer_selectedIthemsTable.getSelectedRow();
+
+            TableModel model = customer_selectedIthemsTable.getModel();
+
+            String table_id = model.getValueAt(index, 0).toString();
+            String table_ithemName = model.getValueAt(index, 1).toString();
+            String table_ithemBrand = model.getValueAt(index, 2).toString();
+            String table_ithemcount = model.getValueAt(index, 3).toString();
+            String table_price = model.getValueAt(index, 4).toString();
+            String table_lavel = model.getValueAt(index, 5).toString();
+            int int_tableLavel = Integer.parseInt(table_lavel);
+
+            orderSummary.setText("ID \t: " + table_id + "\nIthem Name \t: " + table_ithemName + "\nBrand \t: " + table_ithemBrand + "\nIthem Count \t: " + table_ithemcount + "\nIthem Price \t: " + table_price);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR :" + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void removeCart() {
+        String rm_id = txtIndex.getText();
+        String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+        String user = lblUser.getText();
+        String password = lblPassword.getText();
+        try {
+            int index = customer_selectedIthemsTable.getSelectedRow();
+
+            TableModel model = customer_selectedIthemsTable.getModel();
+
+            String table_id = model.getValueAt(index, 0).toString();
+            String table_ithemName = model.getValueAt(index, 1).toString();
+            String table_ithemBrand = model.getValueAt(index, 2).toString();
+            String table_ithemcount = model.getValueAt(index, 3).toString();
+            String table_price = model.getValueAt(index, 4).toString();
+            String table_lavel = model.getValueAt(index, 5).toString();
+            int int_tableLavel = Integer.parseInt(table_lavel);
+
+            orderSummary.setText("ID \t: " + table_id + "\nIthem Name \t: " + table_ithemName + "\nBrand \t: " + table_ithemBrand + "\nIthem Count \t: " + table_ithemcount + "\nIthem Price \t: " + table_price);
+
+            String query = "DELETE FROM cart WHERE I_index ='" + int_tableLavel + "' ";
+
+            Connection conn = DriverManager.getConnection(url, user, password);
+            Statement stmt = conn.createStatement();
+            int rowsAffected = stmt.executeUpdate(query);
+            System.out.println(rowsAffected + " rows affected");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR :" + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void addToCart() {
+        try {
+            int index = customer_IthemsTable.getSelectedRow();
+            TableModel model = customer_IthemsTable.getModel();
+
+            String table_id = model.getValueAt(index, 0).toString();
+            int int_tableId = Integer.parseInt(table_id);
+            String table_ithemName = model.getValueAt(index, 1).toString();
+            String table_ithemBrand = model.getValueAt(index, 2).toString();
+            String table_ithemPrice = model.getValueAt(index, 3).toString();
+            String table_Discount = model.getValueAt(index, 4).toString();
+            String table_ithemCount = model.getValueAt(index, 5).toString();
+            String ithemCount = ithem_count.getText();
+            int int_ithemCount = Integer.parseInt(ithemCount);
+
+            String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+            String user = lblUser.getText();
+            String password = lblPassword.getText();
+            Connection conn = null;
+            int count = 1;
+            try {
+                try {
+                    try {
+                        String query = "SELECT * FROM cart";
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection connection = DriverManager.getConnection(url, user, password);
+                        Statement statement = connection.createStatement();
+                        ResultSet result = statement.executeQuery(query);
+
+                        while (result.next()) {
+//                            JOptionPane.showMessageDialog(null, "count: " + count, "Error", JOptionPane.ERROR_MESSAGE);
+                            count = count + 1;
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                } catch (Exception e) {
+                }
+
+                String query = "INSERT INTO cart (ID, Ithem, Brand, IthemCount)VALUES (" + int_tableId + ", '" + table_ithemName + "', '" + table_ithemBrand + "', " + int_ithemCount + ");";
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(url, user, password);
+                Statement statement = connection.createStatement();
+                statement.executeUpdate(query);
+                clear_ithem();
+                table_ithems();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void selectIthemForCart() {
+        try {
+            int index = customer_IthemsTable.getSelectedRow();
+
+            TableModel model = customer_IthemsTable.getModel();
+
+            String table_id = model.getValueAt(index, 0).toString();
+            String table_ithemName = model.getValueAt(index, 1).toString();
+            String table_ithemBrand = model.getValueAt(index, 2).toString();
+            String table_ithemPrice = model.getValueAt(index, 3).toString();
+            String table_Discount = model.getValueAt(index, 4).toString();
+            String table_ithemCount = model.getValueAt(index, 5).toString();
+
+            customerSummary.setText("ID \t: " + table_id + "\nDiscount \t: " + table_Discount + "\nBrand \t: " + table_ithemBrand + "\nIthem Name \t: " + table_ithemName + "\nIthem Price \t: " + table_ithemPrice);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void filterCustomerTable() {
+//        search_customIthems
+        DefaultTableModel obj = (DefaultTableModel) customer_IthemsTable.getModel();
+        TableRowSorter<DefaultTableModel> obj1 = new TableRowSorter<>(obj);
+        customer_IthemsTable.setRowSorter(obj1);
+        obj1.setRowFilter(RowFilter.regexFilter(search_customIthems.getText()));
+    }
+
+    public void clickRowCustomerTable() {
+        try {
+            String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+            String user = lblUser.getText();
+            String password = lblPassword.getText();
+
+            String query = "SELECT * FROM cart";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(query);
+
+//            JOptionPane.showMessageDialog(null,"result : " + result, "Error", JOptionPane.ERROR_MESSAGE);
+            DefaultTableModel model = (DefaultTableModel) customer_selectedIthemsTable.getModel();
+            model.setRowCount(0);
+
+            while (result.next()) {
+                String i_id = result.getString(1);
+                int int_id = Integer.parseInt(i_id);
+
+                String i_name = result.getString(2);
+
+                String i_brand = result.getString(3);
+
+                String i_count = result.getString(4);
+                int int_iCount = Integer.parseInt(i_count);
+
+                int price = 0;
+
+                String numbeing = result.getString(5);
+                int int_numbering = Integer.parseInt(numbeing);
+
+                Object[] rowData = {int_id, i_name, i_brand, int_iCount, price, int_numbering};
+                rowData = new Object[]{int_id, i_name, i_brand, int_iCount, price, int_numbering};
+//                     i_brand, int_price, flt_discount
+                model.addRow(rowData);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void updateCustomerTable() {
+        String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+        String user = lblUser.getText();
+        String password = lblPassword.getText();
+
+        try {
+            String query = "SELECT * FROM ithems";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(query);
+
+//            JOptionPane.showMessageDialog(null,"result : " + result, "Error", JOptionPane.ERROR_MESSAGE);
+            DefaultTableModel model = (DefaultTableModel) customer_IthemsTable.getModel();
+            model.setRowCount(0);
+
+            while (result.next()) {
+                String i_id = result.getString(1);
+                int int_id = Integer.parseInt(i_id);
+
+                String i_name = result.getString(2);
+
+                String i_brand = result.getString(3);
+
+                String i_price = result.getString(4);
+                int int_iPrice = Integer.parseInt(i_price);
+
+                String i_discount = result.getString(5);
+                float flt_iDiscount = Float.parseFloat(i_discount);
+
+                String i_count = result.getString(6);
+                int int_count = Integer.parseInt(i_count);
+
+                Object[] rowData = {int_id, i_name, i_brand, int_iPrice, flt_iDiscount, int_count};
+                rowData = new Object[]{int_id, i_name, i_brand, int_iPrice, flt_iDiscount, int_count};
+//                     i_brand, int_price, flt_discount
+                model.addRow(rowData);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+//    
+//-----------------------Ithem Management---------------------------------------    
+//  
+    public void stock_filter() {
+        try {
+            int index = ithemTable.getSelectedRow();
+
+            TableModel model = ithemTable.getModel();
+
+            String table_id = model.getValueAt(index, 0).toString();
+            String table_ithemName = model.getValueAt(index, 1).toString();
+            String table_ithemBrand = model.getValueAt(index, 2).toString();
+            String table_ithemPrice = model.getValueAt(index, 3).toString();
+            String Table_Discount = model.getValueAt(index, 4).toString();
+
+            txtIndex.setText(table_id);
+            txtName.setText(table_ithemName);
+            txtBrand.setText(table_ithemBrand);
+            txtPrice.setText(table_ithemPrice);
+            txtDiscount.setText(Table_Discount);
+            jButton8.setEnabled(true);
+            txtIndex.setEnabled(false);
+        } catch (Exception e) {
+        }
+
+    }
+
     public void stock_clear() {
         manage_ID.setText("");
         manage_name.setText("");
@@ -937,6 +1580,9 @@ public class home extends javax.swing.JFrame {
         Connection conn = null;
 
         try {
+            DefaultTableModel model = (DefaultTableModel) stockTable.getModel();
+            model.setRowCount(0);
+
             String query = "UPDATE ithems set stock='" + int_manageChange + "' WHERE ID='" + int_manageID + "'";
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, user, password);
@@ -985,6 +1631,9 @@ public class home extends javax.swing.JFrame {
         }
     }
 
+//    
+//-----------------------Add New---------------------------------------    
+//  
     public void ithems_delet() {
         String rm_id = txtIndex.getText();
 
@@ -1151,6 +1800,9 @@ public class home extends javax.swing.JFrame {
             }
         }
     }
+//    
+//-----------------------LOGIN---------------------------------------    
+//  
 
     public void connect() {
         lblstatus_login.setText("Scaning...");
@@ -1191,16 +1843,24 @@ public class home extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(home.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(home.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(home.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(home.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1216,22 +1876,40 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JButton btnStart;
     private javax.swing.JButton btnStart1;
     private javax.swing.JButton btnStop;
+    private javax.swing.JButton btn_customerSearch;
+    private javax.swing.JTextField cartSearch;
+    private javax.swing.JButton custom_addCart;
+    private javax.swing.JTextArea customerSummary;
+    private javax.swing.JTable customer_IthemsTable;
+    private javax.swing.JTable customer_selectedIthemsTable;
     private javax.swing.JTextArea ithemStatus;
     private javax.swing.JTable ithemTable;
+    private javax.swing.JTextField ithem_count;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1243,18 +1921,27 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField lblLink;
     private javax.swing.JPasswordField lblPassword;
     private javax.swing.JTextField lblPort;
@@ -1263,6 +1950,8 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JTextField manage_ID;
     private javax.swing.JTextField manage_changeCount;
     private javax.swing.JTextField manage_name;
+    private javax.swing.JTextArea orderSummary;
+    private javax.swing.JTextField search_customIthems;
     private javax.swing.JTable stockTable;
     private javax.swing.JTextField txtBrand;
     private javax.swing.JTextField txtDiscount;
