@@ -1333,8 +1333,76 @@ public class home extends javax.swing.JFrame {
 //    
 //-----------------------Customers---------------------------------------    
 //  
+    public void manageIthem() {
+
+//            int balanceBuyIthems = ithemCount - int_balanceCount;
+//            JOptionPane.showMessageDialog(null, "round 3", "Error", JOptionPane.ERROR_MESSAGE);
+//            String query3 = "UPDATE ithems set stock='" + balanceBuyIthems + "' WHERE ID='" + i_id + "'";
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Connection connection3 = DriverManager.getConnection(url, user, password);
+//            Statement statement3 = connection.createStatement();
+//            int rowsUpdated = statement.executeUpdate(query3);
+//            System.out.println(rowsUpdated + " rows updated.");
+//
+////            JOptionPane.showMessageDialog(null, "SHOW : " + rs, "Error" ,JOptionPane.ERROR_MESSAGE);
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "CALCULATION ERROR : " + e, "Error", JOptionPane.ERROR_MESSAGE);
+//        }
+    }
+
     public void buyIthems() {
-        
+        try {
+            String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+            String user = lblUser.getText();
+            String password = lblPassword.getText();
+
+            String query = "SELECT * FROM cart";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(query);
+            DefaultTableModel model = (DefaultTableModel) customer_selectedIthemsTable.getModel();
+
+            while (result.next()) {
+                String i_id = result.getString(1);
+                int int_balanceID = Integer.parseInt(i_id);
+                String i_Count = result.getString(4);
+                int int_balanceCount = Integer.parseInt(i_Count);
+
+                int ithemCount = 0;
+                try {
+                    Connection con = DriverManager.getConnection(url, user, password);
+                    String query2 = "SELECT * FROM ithems WHERE ID = ?";
+                    PreparedStatement pstmt2 = con.prepareStatement(query2);
+                    pstmt2.setInt(1, int_balanceID); // set the value of the first parameter to 1
+                    ResultSet rs = pstmt2.executeQuery();
+                    if (rs.next()) {
+                        String ithem_count = rs.getString("stock");
+                        ithemCount = Integer.parseInt(ithem_count);
+
+//                            JOptionPane.showMessageDialog(null, "DB ithem: " + ithem_count, "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "COUNT Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                try {
+                    int unit = ithemCount - int_balanceCount;
+                    String query3 = "UPDATE ithems set stock='" + unit + "' WHERE ID='" + i_id + "'";
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection connection3 = DriverManager.getConnection(url, user, password);
+                    Statement statement3 = connection3.createStatement();
+                    int rowsUpdated = statement3.executeUpdate(query3);
+                    System.out.println(rowsUpdated + " rows updated.");
+                } catch (Exception e) {
+                }
+
+//                JOptionPane.showMessageDialog(null, "ithems:" + int_balanceID + " | " + int_balanceCount + " | " + ithemCount, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "BUY Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     public void cartBuySummary() {
