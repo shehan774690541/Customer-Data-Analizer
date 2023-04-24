@@ -29,7 +29,7 @@ public class home extends javax.swing.JFrame {
      */
     public home() {
         initComponents();
-        jTabbedPane1.setEnabled(false); 
+        jTabbedPane1.setEnabled(false);
         btnStop.setEnabled(false);
     }
 
@@ -1057,6 +1057,7 @@ public class home extends javax.swing.JFrame {
         customer_IthemsTable.setAutoCreateRowSorter(true);
         clickRowCustomerTable();
         customer_selectedIthemsTable.setAutoCreateRowSorter(true);
+        jTabbedPane1.setEnabled(true);
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
@@ -1252,7 +1253,6 @@ public class home extends javax.swing.JFrame {
             ResultSet result = statement.executeQuery(query);
 
             while (result.next()) {
-                
 
             }
 
@@ -1349,11 +1349,19 @@ public class home extends javax.swing.JFrame {
 
             String table_id = model.getValueAt(index, 0).toString();
             int int_tableId = Integer.parseInt(table_id);
+
             String table_ithemName = model.getValueAt(index, 1).toString();
+
             String table_ithemBrand = model.getValueAt(index, 2).toString();
+
             String table_ithemPrice = model.getValueAt(index, 3).toString();
+            int int_table_ithemPrice = Integer.parseInt(table_ithemPrice);
+
             String table_Discount = model.getValueAt(index, 4).toString();
+            float flt_table_Discount = Float.parseFloat(table_Discount);
+
             String table_ithemCount = model.getValueAt(index, 5).toString();
+
             String ithemCount = ithem_count.getText();
             int int_ithemCount = Integer.parseInt(ithemCount);
 
@@ -1363,8 +1371,11 @@ public class home extends javax.swing.JFrame {
             Connection conn = null;
             int count = 1;
             try {
+                int the_price = int_table_ithemPrice * int_ithemCount;
                 
-                String query = "INSERT INTO cart (ID, Ithem, Brand, IthemCount)VALUES (" + int_tableId + ", '" + table_ithemName + "', '" + table_ithemBrand + "', " + int_ithemCount + ");";
+                int the_discount = the_price / 10;
+                String query = "INSERT INTO cart (ID, Ithem, Brand, IthemCount, price, price_discount)VALUES (" + int_tableId + ", '" + table_ithemName + "', '" + table_ithemBrand + "', " + int_ithemCount + ", " + the_price + ", " + the_discount + ");";
+//                String query = "INSERT INTO table_name (column1, column2, column3)VALUES (" + int_tableId + ", '" + table_ithemName + "', '" + table_ithemBrand + "', " + int_ithemCount + ")";
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection connection = DriverManager.getConnection(url, user, password);
                 Statement statement = connection.createStatement();
@@ -1418,8 +1429,6 @@ public class home extends javax.swing.JFrame {
             Connection connection = DriverManager.getConnection(url, user, password);
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(query);
-
-//            JOptionPane.showMessageDialog(null,"result : " + result, "Error", JOptionPane.ERROR_MESSAGE);
             DefaultTableModel model = (DefaultTableModel) customer_selectedIthemsTable.getModel();
             model.setRowCount(0);
 
@@ -1434,13 +1443,14 @@ public class home extends javax.swing.JFrame {
                 String i_count = result.getString(4);
                 int int_iCount = Integer.parseInt(i_count);
 
-                int price = 0;
+                String i_price = result.getString(6);
+                int int_price = Integer.parseInt(i_price);
 
                 String numbeing = result.getString(5);
                 int int_numbering = Integer.parseInt(numbeing);
 
-                Object[] rowData = {int_id, i_name, i_brand, int_iCount, price, int_numbering};
-                rowData = new Object[]{int_id, i_name, i_brand, int_iCount, price, int_numbering};
+                Object[] rowData = {int_id, i_name, i_brand, int_iCount, int_price, int_numbering};
+                rowData = new Object[]{int_id, i_name, i_brand, int_iCount, int_price, int_numbering};
 //                     i_brand, int_price, flt_discount
                 model.addRow(rowData);
             }
@@ -1684,6 +1694,7 @@ public class home extends javax.swing.JFrame {
                 PreparedStatement pstmt = con.prepareStatement(query);
                 pstmt.setInt(1, int_id); // set the value of the first parameter to 1
                 ResultSet rs = pstmt.executeQuery();
+                txtIndex.setEnabled(false);
 
                 if (rs.next()) {
                     String ithem_name = rs.getString("ithemName");
@@ -1769,41 +1780,51 @@ public class home extends javax.swing.JFrame {
         String ithem_brand = txtBrand.getText();
         String ithem_price = txtPrice.getText();
         String ithem_discount = txtDiscount.getText();
+        float flt_ithem_discount = Float.parseFloat(ithem_discount);
 
         int int_ithem_id = Integer.parseInt(ithem_id);
 
         if (jButton1.getText() == "SAVE") {
-            if (ithem_id.equals("") || ithem_name.equals("") || ithem_brand.equals("") || ithem_price.equals("") || ithem_discount.equals("")) {
-                JOptionPane.showMessageDialog(null, "Check Enterd Values!");
+            if (flt_ithem_discount < 101.0) {
+                if (ithem_id.equals("") || ithem_name.equals("") || ithem_brand.equals("") || ithem_price.equals("") || ithem_discount.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Check Enterd Values!");
+                } else {
+                    try {
+                        String query = "INSERT INTO ithems VALUES ('" + int_ithem_id + "','" + ithem_name + "', '" + ithem_brand + "', '" + ithem_price + "', '" + ithem_discount + "', '" + 0 + "')";
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        Connection connection = DriverManager.getConnection(url, user, password);
+                        Statement statement = connection.createStatement();
+                        statement.executeUpdate(query);
+                        clear_ithem();
+                        table_ithems();
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             } else {
+                JOptionPane.showMessageDialog(null, "Error: Discount Amount is 100+ check it!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        if (jButton1.getText() == "EDIT") {
+            if (flt_ithem_discount < 101.0) {
+//            JOptionPane.showMessageDialog(null, "edit", "Error", JOptionPane.ERROR_MESSAGE);
                 try {
-                    String query = "INSERT INTO ithems VALUES ('" + int_ithem_id + "','" + ithem_name + "', '" + ithem_brand + "', '" + ithem_price + "', '" + ithem_discount + "', '" + 0 + "')";
+                    String query = "UPDATE ithems set ithemName='" + ithem_name + "' ,ithemBrand='" + ithem_brand + "' ,ithemPrce='" + ithem_price + "' ,ithemDiscount='" + ithem_discount + "' WHERE ID='" + int_ithem_id + "'";
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     Connection connection = DriverManager.getConnection(url, user, password);
                     Statement statement = connection.createStatement();
-                    statement.executeUpdate(query);
+                    int rowsUpdated = statement.executeUpdate(query);
+                    System.out.println(rowsUpdated + " rows updated.");
                     clear_ithem();
                     table_ithems();
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Error: Discount Amount is 100+ check it!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-        if (jButton1.getText() == "EDIT") {
-//            JOptionPane.showMessageDialog(null, "edit", "Error", JOptionPane.ERROR_MESSAGE);
-            try {
-                String query = "UPDATE ithems set ithemName='" + ithem_name + "' ,ithemBrand='" + ithem_brand + "' ,ithemPrce='" + ithem_price + "' ,ithemDiscount='" + ithem_discount + "' WHERE ID='" + int_ithem_id + "'";
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection connection = DriverManager.getConnection(url, user, password);
-                Statement statement = connection.createStatement();
-                int rowsUpdated = statement.executeUpdate(query);
-                System.out.println(rowsUpdated + " rows updated.");
-                clear_ithem();
-                table_ithems();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
+
     }
 //    
 //-----------------------LOGIN---------------------------------------    
@@ -1820,7 +1841,6 @@ public class home extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
             lblstatus_login.setText("Connection successful!");
-            jTabbedPane1.setEnabled(true);
             btnStop.setEnabled(true);
             //            System.out.println("Connection successful!");
         } catch (Exception e) {
