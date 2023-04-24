@@ -1080,21 +1080,26 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStopActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        connect();
-        table_ithems();
-        jButton8.setEnabled(false);
-        ithemTable.setAutoCreateRowSorter(true);
-        table_manageIthem();
-        stockTable.setAutoCreateRowSorter(true);
-        updateCustomerTable();
-        customer_IthemsTable.setAutoCreateRowSorter(true);
-        clickRowCustomerTable();
-        customer_selectedIthemsTable.setAutoCreateRowSorter(true);
-        jTabbedPane1.setEnabled(true);
-        customDiscount.setEnabled(false);
-        txtCustomDiscount.setEnabled(false);
-        btnStart.setEnabled(false);
-        lblstatus_login.setText("Applicaton Started!!");
+        try {
+            connect();
+            table_ithems();
+            jButton8.setEnabled(false);
+            ithemTable.setAutoCreateRowSorter(true);
+            table_manageIthem();
+            stockTable.setAutoCreateRowSorter(true);
+            updateCustomerTable();
+            customer_IthemsTable.setAutoCreateRowSorter(true);
+            clickRowCustomerTable();
+            customer_selectedIthemsTable.setAutoCreateRowSorter(true);
+            jTabbedPane1.setEnabled(true);
+            customDiscount.setEnabled(false);
+            txtCustomDiscount.setEnabled(false);
+            btnStart.setEnabled(false);
+            lblstatus_login.setText("Applicaton Started!!");
+        } catch (Exception e) {
+        }
+
+
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
@@ -1333,23 +1338,6 @@ public class home extends javax.swing.JFrame {
 //    
 //-----------------------Customers---------------------------------------    
 //  
-    public void manageIthem() {
-
-//            int balanceBuyIthems = ithemCount - int_balanceCount;
-//            JOptionPane.showMessageDialog(null, "round 3", "Error", JOptionPane.ERROR_MESSAGE);
-//            String query3 = "UPDATE ithems set stock='" + balanceBuyIthems + "' WHERE ID='" + i_id + "'";
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            Connection connection3 = DriverManager.getConnection(url, user, password);
-//            Statement statement3 = connection.createStatement();
-//            int rowsUpdated = statement.executeUpdate(query3);
-//            System.out.println(rowsUpdated + " rows updated.");
-//
-////            JOptionPane.showMessageDialog(null, "SHOW : " + rs, "Error" ,JOptionPane.ERROR_MESSAGE);
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "CALCULATION ERROR : " + e, "Error", JOptionPane.ERROR_MESSAGE);
-//        }
-    }
-
     public void buyIthems() {
         try {
             String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
@@ -1399,6 +1387,11 @@ public class home extends javax.swing.JFrame {
 
 //                JOptionPane.showMessageDialog(null, "ithems:" + int_balanceID + " | " + int_balanceCount + " | " + ithemCount, "Error", JOptionPane.ERROR_MESSAGE);
             }
+            table_ithems();
+            table_manageIthem();
+            updateCustomerTable();
+            clickRowCustomerTable();
+            orderSummary.setText("Payment Successfull!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "BUY Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
