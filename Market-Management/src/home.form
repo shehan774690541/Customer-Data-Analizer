@@ -1120,7 +1120,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel13" max="32767" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextField5" min="-2" pref="138" max="-2" attributes="0"/>
+                                      <Component id="viewTotalPrice" min="-2" pref="138" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel15" min="-2" pref="37" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1173,7 +1173,7 @@
                                   <Component id="jButton15" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="ithem_count" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton16" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="viewTotalPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1249,7 +1249,7 @@
                         <Property name="text" type="java.lang.String" value="Ithem Count"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField5">
+                    <Component class="javax.swing.JTextField" name="viewTotalPrice">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                       </Properties>
@@ -1274,6 +1274,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="CART"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1360,6 +1363,9 @@
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCustomDiscount">
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCustomDiscountKeyReleased"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JCheckBox" name="customDiscount">
                       <Properties>

@@ -114,7 +114,7 @@ public class home extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         ithem_count = new javax.swing.JTextField();
         jButton16 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
+        viewTotalPrice = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
@@ -821,7 +821,7 @@ public class home extends javax.swing.JFrame {
 
         jButton16.setText("Ithem Count");
 
-        jTextField5.setEditable(false);
+        viewTotalPrice.setEditable(false);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("PRICE :");
@@ -830,6 +830,11 @@ public class home extends javax.swing.JFrame {
         jLabel15.setText("LKR");
 
         jButton5.setText("CART");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -842,7 +847,7 @@ public class home extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(viewTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -886,7 +891,7 @@ public class home extends javax.swing.JFrame {
                     .addComponent(jButton15)
                     .addComponent(ithem_count, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton16)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
                     .addComponent(jLabel15)
                     .addComponent(jButton5))
@@ -909,6 +914,12 @@ public class home extends javax.swing.JFrame {
         addDiscount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDiscountActionPerformed(evt);
+            }
+        });
+
+        txtCustomDiscount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCustomDiscountKeyReleased(evt);
             }
         });
 
@@ -1209,6 +1220,7 @@ public class home extends javax.swing.JFrame {
         // TODO add your handling code here:
         addToCart();
         clickRowCustomerTable();
+        cartBuySummary();
     }//GEN-LAST:event_custom_addCartActionPerformed
 
     private void customer_IthemsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customer_IthemsTableMouseClicked
@@ -1226,6 +1238,8 @@ public class home extends javax.swing.JFrame {
         DefaultTableModel mode2 = (DefaultTableModel) customer_selectedIthemsTable.getModel();
         mode2.setRowCount(0);
         clickRowCustomerTable();
+
+        cartBuySummary();
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -1234,6 +1248,7 @@ public class home extends javax.swing.JFrame {
         DefaultTableModel mode2 = (DefaultTableModel) customer_selectedIthemsTable.getModel();
         mode2.setRowCount(0);
         clickRowCustomerTable();
+        cartBuySummary();
         orderSummary.setText("");
     }//GEN-LAST:event_jButton13ActionPerformed
 
@@ -1248,6 +1263,7 @@ public class home extends javax.swing.JFrame {
         DefaultTableModel mode2 = (DefaultTableModel) customer_selectedIthemsTable.getModel();
         mode2.setRowCount(0);
         clickRowCustomerTable();
+        cartBuySummary();
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void cartSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cartSearchKeyReleased
@@ -1267,6 +1283,7 @@ public class home extends javax.swing.JFrame {
     private void addDiscountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDiscountMouseClicked
         // TODO add your handling code here:
         clickRowCustomerTable();
+        cartBuySummary();
         if (addDiscount.isSelected()) {
             addDiscount.setText("Add Discount");
             customDiscount.setEnabled(false);
@@ -1297,8 +1314,18 @@ public class home extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
-        byeIthems();
+        buyIthems();
     }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        cartBuySummary();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void txtCustomDiscountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomDiscountKeyReleased
+        // TODO add your handling code here:
+        cartBuySummary();
+    }//GEN-LAST:event_txtCustomDiscountKeyReleased
 
     /**
      * @param args the command line arguments
@@ -1306,8 +1333,52 @@ public class home extends javax.swing.JFrame {
 //    
 //-----------------------Customers---------------------------------------    
 //  
-    public void byeIthems() {
+    public void buyIthems() {
         
+    }
+
+    public void cartBuySummary() {
+        float totalPrice = 0;
+        try {
+            String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+            String user = lblUser.getText();
+            String password = lblPassword.getText();
+
+            String query = "SELECT * FROM cart";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(url, user, password);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(query);
+            DefaultTableModel model = (DefaultTableModel) customer_selectedIthemsTable.getModel();
+
+            while (result.next()) {
+                if (addDiscount.isSelected()) {
+                    String o_price = result.getString(7);
+                    int int_Oprice = Integer.parseInt(o_price);
+                    totalPrice = totalPrice + int_Oprice;
+                } else {
+                    String o_price = result.getString(6);
+                    int int_Oprice = Integer.parseInt(o_price);
+                    totalPrice = totalPrice + int_Oprice;
+                }
+            }
+            if (customDiscount.isSelected()) {
+                try {
+                    String cus_discount = txtCustomDiscount.getText();
+                    Float float_cuDiscount = Float.parseFloat(cus_discount);
+                    Float floatCuDiscount = float_cuDiscount / 100;
+
+                    Float total_Price = totalPrice * floatCuDiscount;
+                    totalPrice = totalPrice - total_Price;
+                } catch (Exception e) {
+                    viewTotalPrice.setText("Totalaing Error");
+                }
+
+            }
+            viewTotalPrice.setText(": " + totalPrice);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public void calculatePrice() {
@@ -1355,7 +1426,7 @@ public class home extends javax.swing.JFrame {
     }
 
     public void cartSummary() {
-        String rm_id = txtIndex.getText();
+//        String rm_id = txtIndex.getText();
 
         String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
         String user = lblUser.getText();
@@ -1401,7 +1472,7 @@ public class home extends javax.swing.JFrame {
 
             orderSummary.setText("ID \t: " + table_id + "\nIthem Name \t: " + table_ithemName + "\nBrand \t: " + table_ithemBrand + "\nIthem Count \t: " + table_ithemcount + "\nIthem Price \t: " + table_price);
 
-            String query = "DELETE FROM cart WHERE I_index ='" + int_tableLavel + "' ";
+            String query = "DELETE FROM cart WHERE I_index =" + int_tableLavel + " ";
 
             Connection conn = DriverManager.getConnection(url, user, password);
             Statement stmt = conn.createStatement();
@@ -1468,6 +1539,7 @@ public class home extends javax.swing.JFrame {
     }
 
     public void selectIthemForCart() {
+        cartBuySummary();
         try {
             int index = customer_IthemsTable.getSelectedRow();
 
@@ -1529,7 +1601,7 @@ public class home extends javax.swing.JFrame {
                     String i_price = result.getString(6);
                     int_price = Integer.parseInt(i_price);
                 }
-                String numbeing = result.getString(6);
+                String numbeing = result.getString(5);
                 int int_numbering = Integer.parseInt(numbeing);
 
                 Object[] rowData = {int_id, i_name, i_brand, int_iCount, int_price, int_numbering};
@@ -1914,13 +1986,13 @@ public class home extends javax.swing.JFrame {
 //  
 
     public void connect() {
-        lblstatus_login.setText("Scaning...");
-        String url = lblLink.getText() + ":" + lblPort.getText() + "/";
-        String user = lblUser.getText();
-        String password = lblPassword.getText();
-        Connection conn = null;
-        try {
 
+        try {
+            lblstatus_login.setText("Scaning...");
+            String url = lblLink.getText() + ":" + lblPort.getText() + "/";
+            String user = lblUser.getText();
+            String password = lblPassword.getText();
+            Connection conn = null;
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
             lblstatus_login.setText("Connection successful!");
@@ -1929,16 +2001,16 @@ public class home extends javax.swing.JFrame {
         } catch (Exception e) {
             lblstatus_login.setText("Connection failed!");
             JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
-
-            //            System.err.println("Connection failed!");
-            //            e.printStackTrace();
-        } finally {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                lblstatus_login.setText("ERROR : " + e);
-            }
         }
+        //            System.err.println("Connection failed!");
+        //            e.printStackTrace();
+//        } finally {
+//            try {
+//                conn.close();
+//            } catch (SQLException e) {
+//                lblstatus_login.setText("ERROR : " + e);
+//            }
+//        }
 
     }
 
@@ -2050,7 +2122,6 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField lblLink;
     private javax.swing.JPasswordField lblPassword;
     private javax.swing.JTextField lblPort;
@@ -2068,5 +2139,6 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JTextField txtIndex;
     private javax.swing.JTextArea txtName;
     private javax.swing.JTextField txtPrice;
+    private javax.swing.JTextField viewTotalPrice;
     // End of variables declaration//GEN-END:variables
 }
