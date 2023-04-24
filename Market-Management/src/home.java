@@ -1,4 +1,6 @@
 
+import java.awt.Desktop;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -57,6 +59,8 @@ public class home extends javax.swing.JFrame {
         btnStart = new javax.swing.JButton();
         btnStop = new javax.swing.JButton();
         lblstatus_login = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -127,6 +131,14 @@ public class home extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         orderSummary = new javax.swing.JTextArea();
+        jPanel12 = new javax.swing.JPanel();
+        jButton12 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -245,21 +257,38 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel20.setText("KAPPAGODA MORTORS");
+
+        jLabel21.setText("Developed By : Shehan Rajapaksha - +94774690541");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(218, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(175, 175, 175))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addGap(303, 303, 303))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addGap(409, 409, 409))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(jLabel20)
+                .addGap(43, 43, 43)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel21)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("LOGin", jPanel3);
@@ -1022,6 +1051,92 @@ public class home extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Customers", jPanel7);
 
+        jButton12.setText("Check Having Database");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        jButton18.setText("Download Database");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
+        jButton19.setText("Contact Developer");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+
+        jButton20.setText("updates and status");
+        jButton20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton20ActionPerformed(evt);
+            }
+        });
+
+        jButton21.setText("Check Local Database");
+        jButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton21ActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.jpeg"))); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel17.setText("Developed By Shehan Rajapaksha");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton12)
+                    .addComponent(jButton18)
+                    .addComponent(jButton19)
+                    .addComponent(jButton20)
+                    .addComponent(jButton21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 456, Short.MAX_VALUE)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(169, 169, 169))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(185, 185, 185))))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel17))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jButton12)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton19)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton20)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton21)))
+                .addContainerGap(288, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("SETTINGS", jPanel12);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1080,26 +1195,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStopActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-        try {
-            connect();
-            table_ithems();
-            jButton8.setEnabled(false);
-            ithemTable.setAutoCreateRowSorter(true);
-            table_manageIthem();
-            stockTable.setAutoCreateRowSorter(true);
-            updateCustomerTable();
-            customer_IthemsTable.setAutoCreateRowSorter(true);
-            clickRowCustomerTable();
-            customer_selectedIthemsTable.setAutoCreateRowSorter(true);
-            jTabbedPane1.setEnabled(true);
-            customDiscount.setEnabled(false);
-            txtCustomDiscount.setEnabled(false);
-            btnStart.setEnabled(false);
-            lblstatus_login.setText("Applicaton Started!!");
-        } catch (Exception e) {
-        }
-
-
+        startService();
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
@@ -1331,6 +1427,94 @@ public class home extends javax.swing.JFrame {
         // TODO add your handling code here:
         cartBuySummary();
     }//GEN-LAST:event_txtCustomDiscountKeyReleased
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+        //        lblStatus.setText("Scaning...");
+        String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+        String user = lblUser.getText();
+        String password = lblPassword.getText();
+        Connection conn = null;
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(url, user, password);
+            JOptionPane.showMessageDialog(null, "Connection Successfull!");
+            //            lblStatus.setText("Connection successful!");
+            //            System.out.println("Connection successful!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Connection failed!");
+            //            lblStatus.setText("Connection failed!");
+            //            System.err.println("Connection failed!");
+            //            e.printStackTrace();
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+//                lblStatus.setText("ERROR : " + e);
+            }
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+//        String url = "http://www.example.com"; // replace with your desired URL
+
+        if (Desktop.isDesktopSupported()) {
+            try {
+                //                Desktop.getDesktop().browse(new URL("http://wa.me/+94774690541?text=Help+RCC+STUDENT-APP+:+").toURI());
+                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/RCC-Tech-Student-Data").toURI());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "ERROR : " + e);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Opening browser is not supported on this platform.");
+            //            System.out.println("Opening browser is not supported on this platform.");
+        }
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        // TODO add your handling code here:
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URL("http://wa.me/+94774690541?text=Help+RCC+STUDENT-APP+:+").toURI());
+                //                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/RCC-Tech-Student-Data").toURI());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "ERROR : " + e);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Opening browser is not supported on this platform.");
+            //            System.out.println("Opening browser is not supported on this platform.");
+        }
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
+        // TODO add your handling code here:
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URL("http://gradientstudio.great-site.net/softwares/rcc-Tech-APP/index.php?v=0.0.1.23").toURI());
+                //                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/RCC-Tech-Student-Data").toURI());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "ERROR : " + e);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Opening browser is not supported on this platform.");
+            //            System.out.println("Opening browser is not supported on this platform.");
+        }
+    }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+        // TODO add your handling code here:
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URL("http://localhost/phpmyadmin/").toURI());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "ERROR : " + e);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Opening browser is not supported on this platform.");
+        }
+    }//GEN-LAST:event_jButton21ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2046,6 +2230,38 @@ public class home extends javax.swing.JFrame {
 //-----------------------LOGIN---------------------------------------    
 //  
 
+    public void startService() {
+        try {
+            lblstatus_login.setText("Scaning...");
+            String url = lblLink.getText() + ":" + lblPort.getText() + "/";
+            String user = lblUser.getText();
+            String password = lblPassword.getText();
+            Connection conn = null;
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(url, user, password);
+            lblstatus_login.setText("Connection successful!");
+
+            table_ithems();
+            jButton8.setEnabled(false);
+            ithemTable.setAutoCreateRowSorter(true);
+            table_manageIthem();
+            stockTable.setAutoCreateRowSorter(true);
+            updateCustomerTable();
+            customer_IthemsTable.setAutoCreateRowSorter(true);
+            clickRowCustomerTable();
+            customer_selectedIthemsTable.setAutoCreateRowSorter(true);
+            jTabbedPane1.setEnabled(true);
+            customDiscount.setEnabled(false);
+            txtCustomDiscount.setEnabled(false);
+            btnStart.setEnabled(false);
+            lblstatus_login.setText("Applicaton Started!!");
+
+        } catch (Exception e) {
+            lblstatus_login.setText("Connection failed!");
+            JOptionPane.showMessageDialog(null, "Error: Check Connections Or Check Values \n" + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     public void connect() {
 
         try {
@@ -2133,12 +2349,17 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
+    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2153,9 +2374,13 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2166,6 +2391,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
