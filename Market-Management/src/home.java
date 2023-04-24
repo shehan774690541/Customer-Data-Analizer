@@ -121,9 +121,9 @@ public class home extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         customerSummary = new javax.swing.JTextArea();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jTextField3 = new javax.swing.JTextField();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        addDiscount = new javax.swing.JCheckBox();
+        txtCustomDiscount = new javax.swing.JTextField();
+        customDiscount = new javax.swing.JCheckBox();
         jButton17 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         orderSummary = new javax.swing.JTextArea();
@@ -899,11 +899,32 @@ public class home extends javax.swing.JFrame {
         customerSummary.setRows(5);
         jScrollPane6.setViewportView(customerSummary);
 
-        jCheckBox1.setText("Add Discount");
+        addDiscount.setSelected(true);
+        addDiscount.setText("Add Discount");
+        addDiscount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addDiscountMouseClicked(evt);
+            }
+        });
+        addDiscount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDiscountActionPerformed(evt);
+            }
+        });
 
-        jCheckBox2.setText("Custom Discount");
+        customDiscount.setText("Custom Discount");
+        customDiscount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customDiscountMouseClicked(evt);
+            }
+        });
 
         jButton17.setText("BUY");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         orderSummary.setColumns(20);
         orderSummary.setRows(5);
@@ -923,11 +944,11 @@ public class home extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jCheckBox1)
+                        .addComponent(addDiscount)
                         .addGap(47, 47, 47)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCustomDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox2)
+                        .addComponent(customDiscount)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton17)
                         .addGap(19, 19, 19))))
@@ -941,9 +962,9 @@ public class home extends javax.swing.JFrame {
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox2)
+                            .addComponent(addDiscount)
+                            .addComponent(txtCustomDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(customDiscount)
                             .addComponent(jButton17)))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
                 .addContainerGap())
@@ -1041,6 +1062,7 @@ public class home extends javax.swing.JFrame {
         try {
             btnStop.setEnabled(false);
             jTabbedPane1.setEnabled(false);
+            btnStart.setEnabled(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -1058,6 +1080,10 @@ public class home extends javax.swing.JFrame {
         clickRowCustomerTable();
         customer_selectedIthemsTable.setAutoCreateRowSorter(true);
         jTabbedPane1.setEnabled(true);
+        customDiscount.setEnabled(false);
+        txtCustomDiscount.setEnabled(false);
+        btnStart.setEnabled(false);
+        lblstatus_login.setText("Applicaton Started!!");
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
@@ -1234,12 +1260,56 @@ public class home extends javax.swing.JFrame {
         serchCart();
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void addDiscountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDiscountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addDiscountActionPerformed
+
+    private void addDiscountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addDiscountMouseClicked
+        // TODO add your handling code here:
+        clickRowCustomerTable();
+        if (addDiscount.isSelected()) {
+            addDiscount.setText("Add Discount");
+            customDiscount.setEnabled(false);
+            customDiscount.setSelected(false);
+            txtCustomDiscount.setEnabled(false);
+        } else {
+            addDiscount.setText("No Discount");
+            customDiscount.setEnabled(true);
+            customDiscount.setSelected(false);
+            txtCustomDiscount.setEnabled(false);
+        }
+
+    }//GEN-LAST:event_addDiscountMouseClicked
+
+    private void customDiscountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customDiscountMouseClicked
+        // TODO add your handling code here:
+//        customDiscount.setSelected(false);
+        if (customDiscount.isSelected()) {
+            txtCustomDiscount.setEnabled(true);
+//            addDiscount.setText("Add Discount");
+//            customDiscount.setSelected(false);
+        } else {
+            txtCustomDiscount.setEnabled(false);
+//            addDiscount.setText("No Discount");
+//            customDiscount.setSelected(true);
+        }
+    }//GEN-LAST:event_customDiscountMouseClicked
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+        byeIthems();
+    }//GEN-LAST:event_jButton17ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 //    
 //-----------------------Customers---------------------------------------    
 //  
+    public void byeIthems() {
+        
+    }
+
     public void calculatePrice() {
         try {
             String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
@@ -1371,10 +1441,16 @@ public class home extends javax.swing.JFrame {
             Connection conn = null;
             int count = 1;
             try {
+//                calcumation = price * ithem count - (price * ithem count * discount)
                 int the_price = int_table_ithemPrice * int_ithemCount;
-                
-                int the_discount = the_price / 10;
-                String query = "INSERT INTO cart (ID, Ithem, Brand, IthemCount, price, price_discount)VALUES (" + int_tableId + ", '" + table_ithemName + "', '" + table_ithemBrand + "', " + int_ithemCount + ", " + the_price + ", " + the_discount + ");";
+
+                flt_table_Discount = flt_table_Discount / 100;
+                float presentDiscount = 100 - flt_table_Discount;
+                float priceDiscount = the_price * flt_table_Discount;
+                float chkDiscount = int_table_ithemPrice * int_ithemCount - priceDiscount;
+
+//                customerSummary.setText(int_table_ithemPrice + " * " + int_ithemCount + " - (" + int_table_ithemPrice + "*" + int_ithemCount + "*" + flt_table_Discount + "%)");
+                String query = "INSERT INTO cart (ID, Ithem, Brand, IthemCount, price, price_discount)VALUES (" + int_tableId + ", '" + table_ithemName + "', '" + table_ithemBrand + "', " + int_ithemCount + ", " + the_price + ", " + chkDiscount + ");";
 //                String query = "INSERT INTO table_name (column1, column2, column3)VALUES (" + int_tableId + ", '" + table_ithemName + "', '" + table_ithemBrand + "', " + int_ithemCount + ")";
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection connection = DriverManager.getConnection(url, user, password);
@@ -1419,6 +1495,7 @@ public class home extends javax.swing.JFrame {
     }
 
     public void clickRowCustomerTable() {
+        int int_price = 0;
         try {
             String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
             String user = lblUser.getText();
@@ -1442,11 +1519,17 @@ public class home extends javax.swing.JFrame {
 
                 String i_count = result.getString(4);
                 int int_iCount = Integer.parseInt(i_count);
+//                String numbeing = result.getString(5);
+//                int int_numbering = Integer.parseInt(numbeing);
 
-                String i_price = result.getString(6);
-                int int_price = Integer.parseInt(i_price);
-
-                String numbeing = result.getString(5);
+                if (addDiscount.isSelected()) {
+                    String i_price = result.getString(7);
+                    int_price = Integer.parseInt(i_price);
+                } else {
+                    String i_price = result.getString(6);
+                    int_price = Integer.parseInt(i_price);
+                }
+                String numbeing = result.getString(6);
                 int int_numbering = Integer.parseInt(numbeing);
 
                 Object[] rowData = {int_id, i_name, i_brand, int_iCount, int_price, int_numbering};
@@ -1900,11 +1983,13 @@ public class home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox addDiscount;
     private javax.swing.JButton btnStart;
     private javax.swing.JButton btnStart1;
     private javax.swing.JButton btnStop;
     private javax.swing.JButton btn_customerSearch;
     private javax.swing.JTextField cartSearch;
+    private javax.swing.JCheckBox customDiscount;
     private javax.swing.JButton custom_addCart;
     private javax.swing.JTextArea customerSummary;
     private javax.swing.JTable customer_IthemsTable;
@@ -1928,8 +2013,6 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1967,7 +2050,6 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField lblLink;
     private javax.swing.JPasswordField lblPassword;
@@ -1981,6 +2063,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JTextField search_customIthems;
     private javax.swing.JTable stockTable;
     private javax.swing.JTextField txtBrand;
+    private javax.swing.JTextField txtCustomDiscount;
     private javax.swing.JTextField txtDiscount;
     private javax.swing.JTextField txtIndex;
     private javax.swing.JTextArea txtName;
