@@ -1463,7 +1463,7 @@ public class home extends javax.swing.JFrame {
         if (Desktop.isDesktopSupported()) {
             try {
                 //                Desktop.getDesktop().browse(new URL("http://wa.me/+94774690541?text=Help+RCC+STUDENT-APP+:+").toURI());
-                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/RCC-Tech-Student-Data").toURI());
+                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/Databases/tree/main/Kappagota-Mortors").toURI());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "ERROR : " + e);
             }
@@ -1477,7 +1477,7 @@ public class home extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (Desktop.isDesktopSupported()) {
             try {
-                Desktop.getDesktop().browse(new URL("http://wa.me/+94774690541?text=Help+RCC+STUDENT-APP+:+").toURI());
+                Desktop.getDesktop().browse(new URL("http://wa.me/+94774690541?text=KAPPAGODA+MORTORS-APP+:+").toURI());
                 //                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/RCC-Tech-Student-Data").toURI());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "ERROR : " + e);
