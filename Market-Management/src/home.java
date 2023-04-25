@@ -132,13 +132,14 @@ public class home extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         orderSummary = new javax.swing.JTextArea();
         jPanel12 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jButton12 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -445,9 +446,9 @@ public class home extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane4)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIndex, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                            .addComponent(txtIndex)
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jButton1)
@@ -457,14 +458,15 @@ public class home extends javax.swing.JFrame {
                                 .addComponent(jButton8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton3)))
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                        .addGap(0, 9, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(310, 310, 310)
                         .addComponent(jLabel1)
                         .addGap(352, 352, 352))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
@@ -527,7 +529,7 @@ public class home extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(637, 637, 637)
+                .addGap(624, 624, 624)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -672,8 +674,8 @@ public class home extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(104, 104, 104)
                         .addComponent(jLabel10)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -849,6 +851,11 @@ public class home extends javax.swing.JFrame {
         });
 
         jButton16.setText("Ithem Count");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         viewTotalPrice.setEditable(false);
 
@@ -886,7 +893,9 @@ public class home extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(btn_customerSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                        .addComponent(cartSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cartSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton11))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jButton16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -896,11 +905,9 @@ public class home extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton13)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton11)
-                    .addComponent(jButton5))
+                        .addComponent(jButton13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -1051,91 +1058,100 @@ public class home extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Customers", jPanel7);
 
-        jButton12.setText("Check Having Database");
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel16.setText("Developed By Shehan Rajapaksha");
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.jpeg"))); // NOI18N
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("_____________________________________________________________________\nUser Summary.\nFirst Download the Databases in my github account.\nso you can Click on \"Doanload Database\" button And Download it.\n\n_____________________________________________________________________\nImport Database.\n1. Start Wamp Or Xampp server\n2. \"http://localhost/phpmyadmin/\" Go to This Url\n3. Create New Database \"shop\"\n4. Import -> \"Choose File\" -> import Database (.sql) -> \"Go\"\n5. Refresh And click \"Check Database\" button\n\n_____________________________________________________________________\nBug Reporting.\n1. Install \"Whatsapp web.exe\" For Your PC\n2. Click \"Contact Developer\" button.\n3. please Turn off \"Disappiaring\" in my whatsapp account\n4. Send Auto typed message.\n5. Cpture Screenshot and send your problem\n\n_____________________________________________________________________\nCheck your Application.\nPress \"Status\" button And Check Your Browser");
+        jScrollPane9.setViewportView(jTextArea1);
+
+        jButton12.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu_download.png"))); // NOI18N
+        jButton12.setText("Download Database");
+        jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
             }
         });
 
-        jButton18.setText("Download Database");
+        jButton18.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu_help.png"))); // NOI18N
+        jButton18.setText("Check Database");
+        jButton18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
             }
         });
 
+        jButton19.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu_skin.png"))); // NOI18N
         jButton19.setText("Contact Developer");
+        jButton19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton19ActionPerformed(evt);
             }
         });
 
-        jButton20.setText("updates and status");
+        jButton20.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quick_cast - Copy.png"))); // NOI18N
+        jButton20.setText("  Status");
+        jButton20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton20ActionPerformed(evt);
             }
         });
 
-        jButton21.setText("Check Local Database");
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
-            }
-        });
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.jpeg"))); // NOI18N
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel17.setText("Developed By Shehan Rajapaksha");
-
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+                .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton12)
-                    .addComponent(jButton18)
-                    .addComponent(jButton19)
-                    .addComponent(jButton20)
-                    .addComponent(jButton21))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 456, Short.MAX_VALUE)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addGap(169, 169, 169))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(185, 185, 185))))
+                    .addComponent(jLabel16)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButton18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(129, 129, 129)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel16)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel17))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
+                        .addComponent(jLabel17)
+                        .addGap(34, 34, 34)
                         .addComponent(jButton12)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton19)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton20)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton21)))
-                .addContainerGap(288, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton20))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("SETTINGS", jPanel12);
+        jTabbedPane1.addTab("SETINGS", jPanel12);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1196,6 +1212,8 @@ public class home extends javax.swing.JFrame {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         startService();
+        btnStop.setEnabled(true);
+//        jPanel8.setVisible(true);
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
@@ -1428,10 +1446,15 @@ public class home extends javax.swing.JFrame {
         cartBuySummary();
     }//GEN-LAST:event_txtCustomDiscountKeyReleased
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
-        //        lblStatus.setText("Scaning...");
-        String url = lblLink.getText() + ":" + lblPort.getText() + "/shop";
+
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+
+        String url = lblLink.getText() + ":" + lblPort.getText() + "/rcc";
         String user = lblUser.getText();
         String password = lblPassword.getText();
         Connection conn = null;
@@ -1440,81 +1463,79 @@ public class home extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
             JOptionPane.showMessageDialog(null, "Connection Successfull!");
-            //            lblStatus.setText("Connection successful!");
+
+            if (Desktop.isDesktopSupported()) {
+                try {
+                    Desktop.getDesktop().browse(new URL("http://localhost/phpmyadmin/").toURI());
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "ERROR : " + e);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Opening browser is not supported on this platform.");
+            }
+
+//            lblStatus.setText("Connection successful!");
             //            System.out.println("Connection successful!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Connection failed!");
-            //            lblStatus.setText("Connection failed!");
+//            lblStatus.setText("Connection failed!");
             //            System.err.println("Connection failed!");
             //            e.printStackTrace();
         } finally {
             try {
                 conn.close();
             } catch (SQLException e) {
-//                lblStatus.setText("ERROR : " + e);
+                JOptionPane.showMessageDialog(null, "Opening browser is not supported on this platform.");
             }
         }
-    }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
-//        String url = "http://www.example.com"; // replace with your desired URL
 
-        if (Desktop.isDesktopSupported()) {
-            try {
-                //                Desktop.getDesktop().browse(new URL("http://wa.me/+94774690541?text=Help+RCC+STUDENT-APP+:+").toURI());
-                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/Databases/tree/main/Kappagota-Mortors").toURI());
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "ERROR : " + e);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Opening browser is not supported on this platform.");
-            //            System.out.println("Opening browser is not supported on this platform.");
-        }
     }//GEN-LAST:event_jButton18ActionPerformed
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
         if (Desktop.isDesktopSupported()) {
             try {
-                Desktop.getDesktop().browse(new URL("http://wa.me/+94774690541?text=KAPPAGODA+MORTORS-APP+:+").toURI());
-                //                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/RCC-Tech-Student-Data").toURI());
+//                Desktop.getDesktop().browse(new URL("http://wa.me/+94774690541?text=Help+RCC+STUDENT-APP+:+").toURI());
+                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/Databases/tree/main/Kappagota-Mortors").toURI());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "ERROR : " + e);
+                JOptionPane.showMessageDialog(null,"ERROR : " + e);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Opening browser is not supported on this platform.");
-            //            System.out.println("Opening browser is not supported on this platform.");
+            JOptionPane.showMessageDialog(null,"Opening browser is not supported on this platform.");
+//            System.out.println("Opening browser is not supported on this platform.");
         }
-    }//GEN-LAST:event_jButton19ActionPerformed
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         // TODO add your handling code here:
         if (Desktop.isDesktopSupported()) {
             try {
-                Desktop.getDesktop().browse(new URL("http://gradientstudio.great-site.net/softwares/rcc-Tech-APP/index.php?v=0.0.1.23").toURI());
-                //                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/RCC-Tech-Student-Data").toURI());
+                Desktop.getDesktop().browse(new URL("http://gradientstudio.great-site.net/softwares/kappagoda-mortors/index.php?v=0.0.1.23").toURI());
+//                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/RCC-Tech-Student-Data").toURI());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "ERROR : " + e);
+                JOptionPane.showMessageDialog(null,"ERROR : " + e);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Opening browser is not supported on this platform.");
-            //            System.out.println("Opening browser is not supported on this platform.");
-        }
+            JOptionPane.showMessageDialog(null,"Opening browser is not supported on this platform.");
+//            System.out.println("Opening browser is not supported on this platform.");
+        }  
     }//GEN-LAST:event_jButton20ActionPerformed
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
         if (Desktop.isDesktopSupported()) {
             try {
-                Desktop.getDesktop().browse(new URL("http://localhost/phpmyadmin/").toURI());
+                Desktop.getDesktop().browse(new URL("http://wa.me/+94774690541?text=Help+Kappagoda+Mortots-APP+:+").toURI());
+//                Desktop.getDesktop().browse(new URL("https://github.com/shehan774690541/RCC-Tech-Student-Data").toURI());
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "ERROR : " + e);
+                JOptionPane.showMessageDialog(null,"ERROR : " + e);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Opening browser is not supported on this platform.");
+            JOptionPane.showMessageDialog(null,"Opening browser is not supported on this platform.");
+//            System.out.println("Opening browser is not supported on this platform.");
         }
-    }//GEN-LAST:event_jButton21ActionPerformed
+    }//GEN-LAST:event_jButton19ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2359,7 +2380,6 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2408,7 +2428,9 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField lblLink;
     private javax.swing.JPasswordField lblPassword;
     private javax.swing.JTextField lblPort;
